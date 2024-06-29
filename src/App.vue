@@ -7,7 +7,8 @@ import AuthLayout from '@/layouts/auth/index.vue'
 import DefaultLayout from '@/layouts/empty/index.vue'
 import LandingLayout from '@/layouts/landing-page/index.vue'
 import { markRaw, ref, watch } from 'vue'
-import Curtain from './components/Curtain.vue'
+import Curtain from '@/components/Curtain.vue'
+import AsyncErrorBoundary from '@/components/AsyncErrorBoundary.vue'
 
 const layouts: Record<string, typeof DefaultLayout> = {
     default: DefaultLayout,
@@ -38,6 +39,7 @@ watch(
 
 <template>
     <ConfigProvider :theme="theme">
+        <AsyncErrorBoundary />
         <Curtain />
         <Transition>
             <component :is="layout">

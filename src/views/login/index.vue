@@ -19,7 +19,7 @@ const loginFormState = reactive<LoginRequest>({
 
 if (auth.isLoggedIn) router.push('/')
 
-const { mutate, isPending } = useMutation({
+const { mutate, isPending, error } = useMutation({
     mutationKey: ['login'],
     mutationFn: async () => {
         await auth.login(loginFormState)
@@ -35,7 +35,9 @@ const handleLoginFailed = (errInfo: any) => {
 <template>
     <div id="login" class="my-auto">
         <!-- Title -->
-        <h1 class="login__title font-black text-5xl mb-16">{{ $t('login.big_title') }}</h1>
+        <h1 class="login__title font-black text-5xl mb-16">
+            {{ $t('login.big_title') }}
+        </h1>
 
         <!-- Login form -->
         <Form

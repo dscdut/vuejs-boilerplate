@@ -37,9 +37,9 @@ export const useAuthStore = defineStore({
             const loginResp = await apiLogin(payload)
 
             this.saveAuthData({
-                accessToken: loginResp.accessToken,
-                refreshToken: loginResp.refreshToken,
-                payload: jwtDecode(loginResp.accessToken)
+                accessToken: loginResp.access,
+                refreshToken: loginResp.refresh,
+                payload: jwtDecode(loginResp.access)
             })
 
             router.push(this.returnUrl || '/')
@@ -91,13 +91,13 @@ export const useAuthStore = defineStore({
                 return
             }
 
-            const respData = await apiRefreshToken({ refreshToken: this.refreshToken })
-            if (!respData?.accessToken) {
+            const respData = await apiRefreshToken({ refresh: this.refreshToken })
+            if (!respData?.access) {
                 Promise.reject('Something went wrong')
             }
 
             this.saveAuthData({
-                accessToken: respData.accessToken
+                accessToken: respData.access
             })
         },
         startRefreshTokenTimer() {

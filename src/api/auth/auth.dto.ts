@@ -5,18 +5,18 @@ export type LoginRequest = {
 }
 
 export type LoginResponse = {
-    refreshToken: string
-    accessToken: string
+    refresh: string
+    access: string
 }
 
 /** REFRESH TOKEN */
 
 export type RefreshTokenRequest = {
-    refreshToken: string
+    refresh: string
 }
 
 export type RefreshTokenResponse = {
-    accessToken: string
+    access: string
 }
 
 /** REGISTER */

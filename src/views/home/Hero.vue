@@ -12,13 +12,16 @@ import { RouterLink } from 'vue-router'
             <h1
                 class="text-vue text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter"
             >
-                Lorem ipsum dolor sit amet consectetur.
+                Welcome to Gravity Falls!
             </h1>
             <p class="text-lg mt-4 text-slate-600 max-w-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero labore ipsam quo,
-                accusamus possimus omnis aspernatur consectetur qui deserunt magnam.
-                <wbr /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, illo!
-                Nihil illo ipsa placeat provident voluptate earum officia harum sunt.
+                For their summer vacation, 12-year-old twins Dipper and Mabel Pines are dropped off
+                from their home in Piedmont, California, to the fictitious town of Gravity Falls,
+                Roadkill County, Oregon, to spend the summer with their great uncle Stan Pines
+                (often shortened to Grunkle Stan), who runs a tourist trap called the "Mystery
+                Shack". Things are not what they seem in this small town, and with the help of a
+                mysterious journal that Dipper finds in the forest, they begin unraveling the town's
+                mysteries each day.
             </p>
             <div class="mt-6 flex flex-col sm:flex-row gap-3">
                 <RouterLink

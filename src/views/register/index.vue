@@ -9,16 +9,18 @@ import { omit } from 'lodash'
 import { Form, FormItem, Input, Button } from 'ant-design-vue'
 import { apiRegister } from '@/api/auth'
 import { useMutation } from '@tanstack/vue-query'
+import { RoutePath } from '@/router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 defineProps<{}>()
 const auth = useAuthStore()
 const router = useRouter()
 if (auth?.isLoggedIn) {
-    // push back to home "/"
-    router.push('/')
+    router.push(RoutePath.Home)
 }
 
-//handle form
 const registerForm = reactive<
     RegisterRequest & {
         passwordAgain: string
@@ -37,10 +39,10 @@ const { mutate, isPending } = useMutation({
     mutationFn: async () => {
         await apiRegister(omit(registerForm, 'passwordAgain'))
         Modal.success({
-            title: 'Đăng ký thành công',
-            content: 'Nhấn OK để chuyển đến trang đăng nhập'
+            title: t('register.alert.register_success'),
+            content: t('register.alert.click_ok_to_direct_to_login_page')
         })
-        router.push('/login')
+        router.push(RoutePath.Login)
     }
 })
 

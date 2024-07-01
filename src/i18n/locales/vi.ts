@@ -35,6 +35,10 @@ const localesVI = {
             confirm_password: 'Xác nhận mật khẩu',
             submit_btn: 'Đăng ký'
         },
+        alert: {
+            register_success: 'Đăng ký thành công',
+            click_ok_to_direct_to_login_page: 'Nhấn OK để chuyển đến trang đăng nhập'
+        },
         login_reminder: 'Bạn đã có tài khoản?',
         to_login_page: 'Tới trang đăng nhập'
     }

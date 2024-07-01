@@ -11,8 +11,8 @@ const auth = useAuthStore()
         <header class="flex flex-col lg:flex-row justify-between items-center my-5">
             <div class="flex w-full lg:w-auto items-center justify-between">
                 <a href="/" class="text-lg"
-                    ><span class="font-bold text-slate-800">VUE</span
-                    ><span class="text-slate-500">3</span>
+                    ><span class="font-bold text-slate-800">GRAVITY</span
+                    ><span class="text-slate-500">FALLS</span>
                 </a>
                 <div class="block lg:hidden">
                     <button aria-label="Toggle Menu">
@@ -28,23 +28,31 @@ const auth = useAuthStore()
                             href="/#"
                             class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
                         >
-                            <span> Jacob</span>
+                            <span> Binary</span>
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="/#"
+                        <RouterLink
+                            to="/#"
                             class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
                         >
-                            <span> Jesus</span>
-                        </a>
+                            <span> Caesar</span>
+                        </RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink
+                            to="/#"
+                            class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
+                        >
+                            <span> Atbash</span>
+                        </RouterLink>
                     </li>
                     <li>
                         <a
-                            href="/#"
+                            href="#"
                             class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
                         >
-                            <span> Muhammad</span>
+                            <span> A1Z26</span>
                         </a>
                     </li>
                     <li>
@@ -52,7 +60,7 @@ const auth = useAuthStore()
                             href="#"
                             class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
                         >
-                            <span> Sakyamuni</span>
+                            <span> Vigenère</span>
                         </a>
                     </li>
                     <li>
@@ -60,15 +68,7 @@ const auth = useAuthStore()
                             href="#"
                             class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
                         >
-                            <span> Zarathustra</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
-                        >
-                            <span> Martin Luther</span>
+                            <span> Bill Cipher</span>
                             <span
                                 class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full"
                             >

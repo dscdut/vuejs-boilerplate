@@ -13,7 +13,7 @@ setTimeout(() => {
     <div
         :class="
             clsx(
-                'loading-pomme bg-white text-primary w-screen h-screen flex justify-center items-center fixed z-[999] transition-all ease-in-out duration-[450ms]',
+                '__loading-curtain bg-white text-primary w-screen h-screen flex justify-center items-center fixed z-[999] transition-all ease-in-out duration-[450ms]',
                 isLoadingLayout ? 'top-0' : '-top-[150%]'
             )
         "

@@ -1,12 +1,12 @@
 <template>
     <div class="mt-16 md:mt-0">
         <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, molestiae.
+            Be sure to know which side you're on
         </h2>
         <p class="text-lg mt-4 text-slate-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, eveniet corporis? Minima
-            veritatis, maxime temporibus impedit possimus vitae magni culpa nostrum officia
-            quibusdam unde saepe sequi tempora a voluptates laudantium.
+            It started with bad dreams which became nightmares. I was foolish, I wanted answers, I
+            painted the symbols, I said the words: when gravity falls and the earth becomes sky fear
+            the beast with just one eye.
         </p>
     </div>
 
@@ -29,37 +29,37 @@ import { Icon } from '@iconify/vue'
 
 const features = reactive([
     {
-        title: 'Lorem Ipsum Dolor Sit Amet',
+        title: 'Bill Cipher! Triangle!',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
         icon: 'ph:asterisk-bold'
     },
     {
-        title: 'Lorem Ipsum',
+        title: 'Is Black Magic',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
         icon: 'ph:star-four'
     },
     {
-        title: 'Lorem Ipsum Dolor',
+        title: 'Black & White',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo..',
         icon: 'ph:moon'
     },
     {
-        title: 'Lorem Ipsum Dolor Sit Amet',
+        title: 'Search for the...',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
         icon: 'ph:sparkle'
     },
     {
-        title: 'Lorem',
+        title: 'Flag',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
         icon: 'ph:shooting-star'
     },
     {
-        title: 'Lorem Ipsum',
+        title: 'Watch out!',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
         icon: 'ph:heart'

@@ -8,7 +8,7 @@ import type { LoginRequest } from '@/api/auth/auth.dto.ts'
 import GotoRegisterPageButton from './GotoRegisterPageButton.vue'
 import GotoForgotPasswordButton from './GotoForgotPasswordButton.vue'
 import SSOButtons from './SSOButtons.vue'
-import router from '@/router'
+import router, { RoutePath } from '@/router'
 
 const auth = useAuthStore()
 
@@ -17,13 +17,13 @@ const loginFormState = reactive<LoginRequest>({
     password: ''
 })
 
-if (auth.isLoggedIn) router.push('/')
+if (auth.isLoggedIn) router.push(RoutePath.Home)
 
 const { mutate, isPending, error } = useMutation({
     mutationKey: ['login'],
     mutationFn: async () => {
         await auth.login(loginFormState)
-        router.push(auth.returnUrl || '/')
+        router.push(auth.returnUrl || RoutePath.Home)
     }
 })
 

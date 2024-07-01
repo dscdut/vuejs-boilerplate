@@ -1,11 +1,27 @@
 import { useAuthStore } from '@/stores/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 
+export enum RoutePath {
+    Home = '/',
+    About = '/about',
+    Login = '/login',
+    Register = '/register',
+    NotFound = '/404'
+}
+
+export const PUBLIC_ROUTE_PATHS: string[] = [
+    RoutePath.Login,
+    RoutePath.Register,
+    RoutePath.Home,
+    RoutePath.About,
+    RoutePath.NotFound
+]
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/',
+            path: RoutePath.Home,
             name: 'home',
             component: () => import('../views/home/index.vue'),
             meta: {
@@ -13,16 +29,13 @@ const router = createRouter({
             }
         },
         {
-            path: '/about',
-            name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
+            path: RoutePath.About,
+            name: 'About',
             component: () => import('../views/home/index.vue')
         },
         {
+            path: RoutePath.Login,
             name: 'Login',
-            path: '/login',
             component: () => import('../views/login/index.vue'),
             meta: {
                 title: 'Đăng nhập',
@@ -31,13 +44,21 @@ const router = createRouter({
             }
         },
         {
+            path: RoutePath.Register,
             name: 'Register',
-            path: '/register',
             component: () => import('../views/register/index.vue'),
             meta: {
                 title: 'Đăng ký',
                 layout: 'auth',
                 auth: false
+            }
+        },
+        {
+            path: RoutePath.NotFound,
+            name: '404',
+            component: () => import('../views/404/index.vue'),
+            meta: {
+                title: '404'
             }
         }
     ]
@@ -45,13 +66,18 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
     // redirect to login page if not logged in and trying to access a restricted page
-    const publicPages = ['/login', '/register', '/']
-    const authRequired = !publicPages.includes(to.path)
+    const existingPages = router.getRoutes().map((route) => route.path)
+
+    if (!existingPages.includes(to.path)) {
+        return RoutePath.NotFound
+    }
+
+    const toAuthRequiredRoutes = !PUBLIC_ROUTE_PATHS.includes(to.path)
     const authStore = useAuthStore()
 
-    if (authRequired && !authStore?.isLoggedIn) {
+    if (toAuthRequiredRoutes && !authStore.isLoggedIn) {
         authStore.returnUrl = to.fullPath
-        return '/login'
+        return RoutePath.Login
     }
 })
 

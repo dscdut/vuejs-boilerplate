@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia'
 import { type LoginRequest } from '@/api/auth/auth.dto'
 import { jwtDecode } from 'jwt-decode'
-import router from '@/router'
+import router, { RoutePath } from '@/router'
 import { apiLogin, apiRefreshToken } from '@/api/auth'
 
 interface AuthStoreState {
@@ -20,13 +20,7 @@ interface AuthStoreState {
 
 export const useAuthStore = defineStore({
     id: 'auth',
-    state: (): AuthStoreState => ({
-        accessToken: undefined,
-        refreshToken: undefined,
-        payload: undefined,
-        returnUrl: undefined,
-        refreshTokenTimeout: undefined
-    }),
+    state: (): AuthStoreState => ({}),
     getters: {
         isLoggedIn(state) {
             return !!state?.accessToken
@@ -42,7 +36,7 @@ export const useAuthStore = defineStore({
                 payload: jwtDecode(loginResp.access)
             })
 
-            router.push(this.returnUrl || '/')
+            router.push(this.returnUrl || RoutePath.Home)
         },
         async logout() {
             // revoke token, stop refresh timer, and clear local storage
@@ -53,7 +47,7 @@ export const useAuthStore = defineStore({
             this.accessToken = undefined
             this.refreshToken = undefined
             this.payload = undefined
-            router.push('/login')
+            router.push(RoutePath.Login)
         },
         //
         saveAuthData(data: { accessToken: string; refreshToken?: string; payload?: any }) {

@@ -28,8 +28,7 @@ const localesVI = {
     register: {
         big_title: 'Đăng ký',
         form: {
-            firstName: 'Họ',
-            lastName: 'Tên',
+            name: 'Tên đầy đủ',
             email: 'Địa chỉ email',
             password: 'Mật khẩu',
             confirm_password: 'Xác nhận mật khẩu',

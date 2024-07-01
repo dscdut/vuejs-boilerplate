@@ -23,11 +23,7 @@ export type RefreshTokenResponse = {
 
 export type RegisterRequest = {
     email: string
-    firstName: string
-    lastName: string
-    address: string
-    phone?: string
-    country?: string
+    name: string
     password: string
 }
 

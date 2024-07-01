@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RoutePath } from '@/router'
 import { Icon } from '@iconify/vue'
 import { RouterLink } from 'vue-router'
 </script>
@@ -25,7 +26,7 @@ import { RouterLink } from 'vue-router'
             </p>
             <div class="mt-6 flex flex-col sm:flex-row gap-3">
                 <RouterLink
-                    to="login"
+                    :to="RoutePath.Login"
                     class="flex gap-1 items-center justify-center rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 bg-vue text-white hover:bg-vue-shade border-2 border-transparent px-5 py-2.5"
                     rel="noopener"
                 >

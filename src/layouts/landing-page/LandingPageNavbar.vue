@@ -2,6 +2,7 @@
 import { Icon } from '@iconify/vue'
 import { useAuthStore } from '@/stores/auth'
 import { RouterLink } from 'vue-router'
+import { RoutePath } from '@/router'
 
 const auth = useAuthStore()
 </script>
@@ -80,9 +81,9 @@ const auth = useAuthStore()
             </nav>
             <div>
                 <div v-if="!auth.isLoggedIn" class="hidden lg:flex items-center gap-4">
-                    <RouterLink to="/login">Log in</RouterLink>
+                    <RouterLink :to="RoutePath.Login">Log in</RouterLink>
                     <RouterLink
-                        to="/register"
+                        :to="RoutePath.Register"
                         class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-vue text-white hover:bg-vue-shade border-2 border-transparent"
                         >Sign up
                     </RouterLink>

@@ -6,6 +6,7 @@ import { theme } from '@/theme'
 import AuthLayout from '@/layouts/auth/index.vue'
 import DefaultLayout from '@/layouts/empty/index.vue'
 import LandingLayout from '@/layouts/landing-page/index.vue'
+import AdminLayout from '@/layouts/admin/index.vue'
 import { markRaw, ref, watch } from 'vue'
 import Curtain from '@/components/Curtain.vue'
 import AsyncErrorBoundary from '@/components/AsyncErrorBoundary.vue'
@@ -13,6 +14,7 @@ import AsyncErrorBoundary from '@/components/AsyncErrorBoundary.vue'
 const layouts: Record<string, typeof DefaultLayout> = {
     default: DefaultLayout,
     auth: AuthLayout,
+    admin: AdminLayout,
     'landing-page': LandingLayout
 }
 

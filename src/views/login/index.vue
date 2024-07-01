@@ -28,7 +28,7 @@ const { mutate, isPending, error } = useMutation({
 })
 
 const handleLoginFailed = (errInfo: any) => {
-    console.log('Failed:', errInfo)
+    // console.log('Failed:', errInfo)
 }
 </script>
 
@@ -98,7 +98,6 @@ const handleLoginFailed = (errInfo: any) => {
             </FormItem>
         </Form>
 
-        <!-- Suggest create new account -->
         <div class="login__suggest-register flex flex-col mt-20">
             <span class="text-center text-[16px] mb-2 cursor-default">
                 {{ $t('login.register_reminder') }}

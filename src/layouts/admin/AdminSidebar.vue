@@ -1,23 +1,27 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-import { Modal } from 'ant-design-vue'
+import { Button, Menu, MenuItem, Modal, SubMenu } from 'ant-design-vue'
 import { useAuthStore } from '@/stores/auth'
 import { Icon } from '@iconify/vue'
-import router from '@/router'
+import router, { RoutePath } from '@/router'
+import type { SelectInfo } from 'ant-design-vue/es/menu/src/interface'
 const auth = useAuthStore()
-// selected if current route name is equal to key or parent route name is equal to key
+
+// selected if current route name is equal to key or parent route path is equal to key
 const selectedKeys = ref<string[]>([
     router.currentRoute.value.name as string,
-    ...router.currentRoute.value.matched.map((route) => route.name as string)
+    ...router.currentRoute.value.matched.map((route) => route.path as string)
 ])
 const collapsed = ref<boolean>(false)
 const handleCollapse = () => {
     collapsed.value = !collapsed.value
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const handleSelect = (event: any) => {
-    router.push({ name: event?.key })
+
+const handleSelect = (event: SelectInfo) => {
+    if (!event.key) return
+
+    router.push(String(event.key))
 }
 
 const handleLogout = () => {
@@ -34,13 +38,14 @@ const handleLogout = () => {
 }
 </script>
 <template>
-    <div class="gap-4 bg-[#001529] flex flex-col text-white z-[666]">
-        <a-button type="primary" block class="mb-8" @click="handleCollapse">
+    <!-- ! MENU ITEM KEY MUST BE PATH -->
+    <div class="gap-4 flex flex-col bg-white z-[666] border-r border-gray-400">
+        <Button type="primary" block class="mb-8 rounded-none" @click="handleCollapse">
             <template #icon>
                 <MenuUnfoldOutlined v-if="collapsed" />
                 <MenuFoldOutlined v-else />
             </template>
-        </a-button>
+        </Button>
         <div
             class="flex flex-col gap-3 mb-12"
             :class="{ 'pl-6': !collapsed, 'items-center': collapsed }"
@@ -50,47 +55,46 @@ const handleLogout = () => {
                 :class="{ 'w-24': !collapsed, 'w-12': collapsed }"
             >
                 <img
-                    src="https://res.cloudinary.com/cyantiz/image/upload/v1670993022/YagamiLightRingo_moramg.png"
+                    src="/images/admin-avatar-example.jpg"
                     class="w-full h-full object-cover"
                     alt="#"
                 />
             </div>
             <div v-if="!collapsed">
                 <div class="font-bold text-lg">Admin</div>
-                <div class="text-gray-300">admin@pomme.tech</div>
+                <div class="text-gray-500">admin@example.tech</div>
             </div>
         </div>
-        <a-menu
+        <Menu
             :style="{ width: collapsed ? '64px' : '256px' }"
             id="admin-side-menu"
             @select="handleSelect"
             v-model:selectedKeys="selectedKeys"
+            theme="light"
             mode="inline"
-            theme="dark"
             :inline-collapsed="collapsed"
-            :open-keys="!collapsed ? ['Product Management'] : []"
         >
-            <a-sub-menu key="Product Management">
+            <SubMenu key="tab1">
                 <template #icon><Icon icon="ph:tag-duotone" /></template>
-                <template #title>Quản lý sản phẩm</template>
-                <a-menu-item key="Product Management - List"> Danh sách sản phẩm </a-menu-item>
-                <a-menu-item key="Product Management - Create"> Thêm sản phẩm </a-menu-item>
-            </a-sub-menu>
-            <a-menu-item key="Order Management">
+                <template #title>Tab 1</template>
+                <MenuItem :key="RoutePath.AdminTab1Sub1"> Tab1.1 </MenuItem>
+                <MenuItem :key="RoutePath.AdminTab1Sub2"> Tab1.2 </MenuItem>
+            </SubMenu>
+            <MenuItem :key="RoutePath.AdminTab2">
                 <template #icon>
                     <Icon icon="ph:package-bold" />
                 </template>
-                Quản lý đơn hàng
-            </a-menu-item>
-            <a-menu-item key="User Management">
+                Tab 2
+            </MenuItem>
+            <MenuItem :key="RoutePath.AdminTab3">
                 <template #icon>
                     <Icon icon="ph:user-bold" />
                 </template>
-                Quản lý người dùng
-            </a-menu-item>
-        </a-menu>
+                Tab 3
+            </MenuItem>
+        </Menu>
 
-        <a-menu
+        <Menu
             :style="{
                 width: collapsed ? '64px' : '256px',
                 marginTop: 'auto',
@@ -98,15 +102,15 @@ const handleLogout = () => {
             }"
             id="admin-side-logout"
             mode="inline"
-            theme="dark"
+            theme="light"
             :inline-collapsed="collapsed"
             :selected-keys="[]"
         >
-            <a-menu-item key="Logout" @click="handleLogout">
+            <MenuItem key="Logout" @click="handleLogout">
                 <template #icon> <Icon icon="ph:sign-out" /> </template>
                 Đăng xuất
-            </a-menu-item>
-        </a-menu>
+            </MenuItem>
+        </Menu>
     </div>
 </template>
 

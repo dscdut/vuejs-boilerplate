@@ -1,11 +1,9 @@
 <script setup lang="ts">
-// import { Icon } from '@iconify/vue'
+defineProps<{}>()
 </script>
 
 <template>
-    <div>
-        <!-- nothing yet -->
-    </div>
+    <div>Hello from tab1</div>
 </template>
 
 <style lang="less" scoped></style>

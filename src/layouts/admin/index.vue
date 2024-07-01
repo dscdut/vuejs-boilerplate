@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import AdminSidebar from './AdminSidebar.vue'
-defineProps<{}>()
 </script>
 
 <template>

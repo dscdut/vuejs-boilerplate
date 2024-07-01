@@ -7,10 +7,11 @@ import { Modal } from 'ant-design-vue'
 import type { RegisterRequest } from '@/api/auth/auth.dto'
 import { omit } from 'lodash'
 import { Form, FormItem, Input, Button } from 'ant-design-vue'
-import { apiRegister } from '@/api/auth'
+import { apiRegister } from '@/api/auth/auth.api'
 import { useMutation } from '@tanstack/vue-query'
 import { RoutePath } from '@/router'
 import { useI18n } from 'vue-i18n'
+import GotoLoginPageButton from './GotoLoginPageButton.vue'
 
 const { t } = useI18n()
 
@@ -26,11 +27,9 @@ const registerForm = reactive<
         passwordAgain: string
     }
 >({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     password: '',
-    address: '',
     passwordAgain: ''
 })
 
@@ -70,27 +69,14 @@ const onFinishFailed = (errInfo: any) => {
             @finishFailed="onFinishFailed"
         >
             <FormItem
-                name="firstName"
-                :rules="[{ required: true, message: $t('common.this_field_is_required') }]"
-            >
-                <Input
-                    type="text"
-                    size="large"
-                    v-model:value="registerForm.firstName"
-                    :placeholder="$t('register.form.firstName')"
-                >
-                    <template #prefix> <Icon icon="ph:user-bold" /> </template
-                ></Input>
-            </FormItem>
-            <FormItem
                 name="name"
                 :rules="[{ required: true, message: $t('common.this_field_is_required') }]"
             >
                 <Input
                     type="text"
                     size="large"
-                    v-model:value="registerForm.lastName"
-                    :placeholder="$t('register.form.lastName')"
+                    v-model:value="registerForm.name"
+                    :placeholder="$t('register.form.name')"
                 >
                     <template #prefix> <Icon icon="ph:user-bold" /> </template
                 ></Input>
@@ -148,24 +134,11 @@ const onFinishFailed = (errInfo: any) => {
             </FormItem>
         </Form>
 
-        <!-- Suggest sign in -->
-        <div class="login__suggest-register flex flex-col mt-20">
+        <div class="flex flex-col mt-20">
             <span class="text-center text-[16px] mb-2 cursor-default">{{
                 $t('register.login_reminder')
             }}</span>
-
-            <RouterLink
-                to="/login"
-                class="h-10 rounded-lg font-bold w-full max-w-[336px] bg-white border-black border-2 flex justify-center items-center text-[16px] cursor-pointer hover:text-primary hover:border-primary transition-all duration-300 group"
-            >
-                <span class="transition-all translate-x-2 group-hover:-translate-x-2">{{
-                    $t('register.to_login_page')
-                }}</span>
-                <Icon
-                    icon="ph:arrow-right-bold"
-                    class="opacity-0 -translate-x-6 group-hover:-translate-x-1 group-hover:opacity-100 transition-all"
-                />
-            </RouterLink>
+            <GotoLoginPageButton />
         </div>
     </div>
 </template>

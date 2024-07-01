@@ -1,6 +1,10 @@
-# vue-project
+# vuejs-boilerplate
 
 This template should help get you started developing with Vue 3 in Vite.
+
+## Demo
+
+[https://vuejs-boilerplate-gdscdut.vercel.app/](https://vuejs-boilerplate-gdscdut.vercel.app/)
 
 ## Recommended IDE Setup
 
@@ -9,6 +13,16 @@ This template should help get you started developing with Vue 3 in Vite.
 ## Type Support for `.vue` Imports in TS
 
 TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+
+## Recommended Node Version
+
+To avoid compatibility issues, use Node.js version `v18.20.3 LTS`.
+
+```sh
+nvm install v18.20.3
+
+nvm use v18.20.3
+```
 
 ## Customize configuration
 

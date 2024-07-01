@@ -28,6 +28,7 @@ const { mutate, isPending, error } = useMutation({
 })
 
 const handleLoginFailed = (errInfo: any) => {
+    // * Error will be handled by the AsyncErrorBoundary
     // console.log('Failed:', errInfo)
 }
 </script>

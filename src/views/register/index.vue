@@ -46,10 +46,11 @@ const { mutate, isPending } = useMutation({
 })
 
 const onFinishFailed = (errInfo: any) => {
-    Modal.error({
-        title: 'Đăng ký thất bại',
-        content: errInfo
-    })
+    // * Error will be handled by the AsyncErrorBoundary}
+    // Modal.error({
+    //     title: 'Đăng ký thất bại',
+    //     content: errInfo
+    // })
 }
 </script>
 

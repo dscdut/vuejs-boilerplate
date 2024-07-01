@@ -10,6 +10,17 @@ import { notification } from 'ant-design-vue'
 import { onMounted } from 'vue'
 const [api, contextHolder] = notification.useNotification()
 
+/**
+ * This component is used to catch unhandled promise rejections
+ * and show a notification to the user using Ant Design Vue's notification
+ *
+ * Let open console and try to run a promise reject to see the example:
+ *
+ * ```ts
+ * Promise.reject(new Error('Hello world, i am an error message'))
+ * ```
+ */
+
 onMounted(() => {
     window.addEventListener('unhandledrejection', (event) => {
         event.promise.catch((error) => {

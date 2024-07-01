@@ -6,8 +6,8 @@ import localesJA from './locales/ja'
 
 const i18n = createI18n({
     legacy: false,
-    locale: 'vi',
-    fallbackLocale: 'en',
+    locale: 'en',
+    fallbackLocale: 'vi',
     messages: {
         vi: localesVI,
         en: localesEN,

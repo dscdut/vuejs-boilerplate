@@ -6,7 +6,10 @@ import { useAuthStore } from '@/stores/auth'
 import { Icon } from '@iconify/vue'
 import router, { RoutePath } from '@/router'
 import type { SelectInfo } from 'ant-design-vue/es/menu/src/interface'
+import { useI18n } from 'vue-i18n'
+
 const auth = useAuthStore()
+const { t } = useI18n()
 
 // selected if current route name is equal to key or parent route path is equal to key
 const selectedKeys = ref<string[]>([
@@ -26,10 +29,10 @@ const handleSelect = (event: SelectInfo) => {
 
 const handleLogout = () => {
     Modal.confirm({
-        title: 'Bạn có chắc muốn đăng xuất?',
+        title: t('admin.sidebar.logout.prompt'),
         centered: true,
-        okText: 'Có',
-        cancelText: 'Không',
+        okText: t('admin.sidebar.logout.ok'),
+        cancelText: t('admin.sidebar.logout.cancel'),
         onOk: async () => {
             await auth.logout()
             window.location.replace('/')
@@ -39,7 +42,7 @@ const handleLogout = () => {
 </script>
 <template>
     <!-- ! MENU ITEM KEY MUST BE PATH -->
-    <div class="gap-4 flex flex-col bg-white z-[666] border-r border-gray-400">
+    <div class="gap-4 flex flex-col bg-white z-[666] border-r drop-shadow">
         <Button type="primary" block class="mb-8 rounded-none" @click="handleCollapse">
             <template #icon>
                 <MenuUnfoldOutlined v-if="collapsed" />
@@ -106,9 +109,13 @@ const handleLogout = () => {
             :inline-collapsed="collapsed"
             :selected-keys="[]"
         >
-            <MenuItem key="Logout" @click="handleLogout">
+            <MenuItem key="home" @click="$router.push(RoutePath.Home)">
+                <template #icon> <Icon icon="ph:house" /> </template>
+                {{ $t('admin.sidebar.back_home.title') }}
+            </MenuItem>
+            <MenuItem key="logout" @click="handleLogout">
                 <template #icon> <Icon icon="ph:sign-out" /> </template>
-                Đăng xuất
+                {{ $t('admin.sidebar.logout.title') }}
             </MenuItem>
         </Menu>
     </div>

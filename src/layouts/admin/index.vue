@@ -5,11 +5,13 @@ import AdminSidebar from './AdminSidebar.vue'
 <template>
     <div class="__admin__ flex h-screen overflow-hidden">
         <AdminSidebar />
-        <div class="flex-1 bg-white min-h-screen overflow-y-scroll px-12 py-8 relative">
-            <div class="title font-bold text-2xl">
-                {{ $route.meta.title }}
+        <div class="flex-1 min-h-screen p-4 overflow-y-scroll relative">
+            <div class="w-full h-full bg-white border p-4 rounded-lg flex flex-col drop-shadow">
+                <span class="title font-bold text-2xl">
+                    {{ $route.meta.title }}
+                </span>
+                <slot />
             </div>
-            <slot />
         </div>
     </div>
 </template>

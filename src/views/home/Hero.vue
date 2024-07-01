@@ -13,16 +13,10 @@ import { RouterLink } from 'vue-router'
             <h1
                 class="text-vue text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter"
             >
-                Welcome to Gravity Falls!
+                {{ $t('home.hero.welcome') }}
             </h1>
             <p class="text-lg mt-4 text-slate-600 max-w-xl">
-                For their summer vacation, 12-year-old twins Dipper and Mabel Pines are dropped off
-                from their home in Piedmont, California, to the fictitious town of Gravity Falls,
-                Roadkill County, Oregon, to spend the summer with their great uncle Stan Pines
-                (often shortened to Grunkle Stan), who runs a tourist trap called the "Mystery
-                Shack". Things are not what they seem in this small town, and with the help of a
-                mysterious journal that Dipper finds in the forest, they begin unraveling the town's
-                mysteries each day.
+                {{ $t('home.hero.secondary') }}
             </p>
             <div class="mt-6 flex flex-col sm:flex-row gap-3">
                 <RouterLink
@@ -30,7 +24,7 @@ import { RouterLink } from 'vue-router'
                     class="flex gap-1 items-center justify-center rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 bg-vue text-white hover:bg-vue-shade border-2 border-transparent px-5 py-2.5"
                     rel="noopener"
                 >
-                    Start now
+                    {{ $t('home.hero.start_now') }}
                     <Icon icon="ph:arrow-up-right" />
                 </RouterLink>
                 <a
@@ -40,7 +34,7 @@ import { RouterLink } from 'vue-router'
                     target="_blank"
                     href="#"
                 >
-                    About
+                    {{ $t('home.hero.learn_more') }}
                     <Icon icon="ph:arrow-up-right" />
                 </a>
             </div>

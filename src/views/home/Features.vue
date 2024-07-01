@@ -1,12 +1,10 @@
 <template>
     <div class="mt-16 md:mt-0">
         <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-            Be sure to know which side you're on
+            {{ $t('home.features.title') }}
         </h2>
         <p class="text-lg mt-4 text-slate-600">
-            It started with bad dreams which became nightmares. I was foolish, I wanted answers, I
-            painted the symbols, I said the words: when gravity falls and the earth becomes sky fear
-            the beast with just one eye.
+            {{ $t('home.features.secondary') }}
         </p>
     </div>
 
@@ -26,42 +24,39 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const features = reactive([
     {
-        title: 'Bill Cipher! Triangle!',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+        title: t('home.features.feature1.title'),
+        description: t('home.features.feature1.description'),
         icon: 'ph:asterisk-bold'
     },
     {
-        title: 'Is Black Magic',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+        title: t('home.features.feature2.title'),
+        description: t('home.features.feature2.description'),
         icon: 'ph:star-four'
     },
     {
-        title: 'Black & White',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo..',
+        title: t('home.features.feature3.title'),
+        description: t('home.features.feature3.description'),
         icon: 'ph:moon'
     },
     {
-        title: 'Search for the...',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+        title: t('home.features.feature4.title'),
+        description: t('home.features.feature4.description'),
         icon: 'ph:sparkle'
     },
     {
-        title: 'Flag',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+        title: t('home.features.feature5.title'),
+        description: t('home.features.feature5.description'),
         icon: 'ph:shooting-star'
     },
     {
-        title: 'Watch out!',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+        title: t('home.features.feature6.title'),
+        description: t('home.features.feature6.description'),
         icon: 'ph:heart'
     }
 ])

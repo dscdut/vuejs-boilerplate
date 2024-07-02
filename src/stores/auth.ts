@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { defineStore } from 'pinia'
+import { apiLogin, apiRefreshToken } from '@/api'
 import { type LoginRequest } from '@/api/auth/auth.dto'
-import { jwtDecode } from 'jwt-decode'
 import router, { RoutePath } from '@/router'
-import { apiLogin, apiRefreshToken } from '@/api/auth/auth.api'
+import { jwtDecode } from 'jwt-decode'
+import { defineStore } from 'pinia'
 
 interface AuthStoreState {
     accessToken?: string

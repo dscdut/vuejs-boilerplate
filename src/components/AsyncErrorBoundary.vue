@@ -4,10 +4,9 @@
 </template>
 
 <script setup lang="ts">
-import { onUnmounted } from 'vue'
-import { v4 as uuid } from 'uuid'
 import { notification } from 'ant-design-vue'
-import { onMounted } from 'vue'
+import { v4 as uuid } from 'uuid'
+import { onMounted, onUnmounted } from 'vue'
 const [api, contextHolder] = notification.useNotification()
 
 /**

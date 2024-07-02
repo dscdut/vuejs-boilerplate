@@ -1,7 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Curtain from '@/components/Curtain.vue'
+import { ref } from 'vue'
+
+const showCurtain = ref(true)
+
+setTimeout(() => {
+    showCurtain.value = false // Show only 500ms for "đẹp" purpose
+}, 500)
+</script>
 
 <template>
-    <div class="__auth__">
+    <Curtain :show="showCurtain" />
+    <div class="__auth-layout__">
         <div class="flex flex-col justify-start left p-8 w-[400px]">
             <RouterLink to="/" class="cursor-pointer">
                 <!-- <img src="/granny-smith-logo.svg" alt="logo" class="h-[60px]" /> -->
@@ -26,7 +36,7 @@
 </template>
 
 <style lang="less" scoped>
-.__auth__ {
+.__auth-layout__ {
     @apply flex w-screen h-screen justify-center;
 }
 .bg-image {

@@ -1,20 +1,24 @@
 <script setup lang="ts">
+/**
+ * Show a curtain to prevent user interaction while waiting for some async tasks, like checking user's role, fetching initial data, loading styles, etc.
+ */
+
 import { clsx } from '@/utils/clsx'
-import { ref } from 'vue'
-
-const isLoadingLayout = ref(true)
-
-setTimeout(() => {
-    isLoadingLayout.value = false
-}, 500)
+defineProps({
+    show: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
+})
 </script>
 
 <template>
     <div
         :class="
             clsx(
-                '__loading-curtain bg-white text-primary w-screen h-screen flex justify-center items-center fixed z-[999] transition-all ease-in-out duration-[450ms]',
-                isLoadingLayout ? 'top-0' : '-top-[150%]'
+                '__curtain bg-white text-primary w-screen h-screen flex justify-center items-center fixed z-[999] transition-all ease-in-out duration-[450ms]',
+                show ? 'top-0' : '-top-[150%]'
             )
         "
     >

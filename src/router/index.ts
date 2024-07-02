@@ -26,11 +26,7 @@ export const PUBLIC_ROUTE_PATHS: string[] = [
     RoutePath.Register,
     RoutePath.Home,
     RoutePath.About,
-    RoutePath.NotFound,
-    RoutePath.AdminTab1Sub1,
-    RoutePath.AdminTab1Sub2,
-    RoutePath.AdminTab2,
-    RoutePath.AdminTab3
+    RoutePath.NotFound
 ]
 
 const router = createRouter({
@@ -135,14 +131,12 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
     // redirect to login page if not logged in and trying to access a restricted page
-    console.log(':::Router ->  ', to.path)
+    console.log(':::Router -> ', to.path)
     const existingPages = router.getRoutes().map((route) => route.path)
     if (!existingPages.includes(to.path)) {
         console.log(`:::Router -> '${to.path}' not found, redirect to 404 page`)
         return RoutePath.NotFound
     }
-
-    console.log(':::metadata -> ', to.meta)
 
     const toAuthRequiredRoutes = !PUBLIC_ROUTE_PATHS.includes(to.path)
     const authStore = useAuthStore()

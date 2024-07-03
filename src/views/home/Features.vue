@@ -22,8 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
 import { Icon } from '@iconify/vue'
+import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

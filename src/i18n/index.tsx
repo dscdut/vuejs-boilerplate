@@ -1,8 +1,8 @@
 import { createI18n } from 'vue-i18n'
 
-import localesVI from './locales/vi'
 import localesEN from './locales/en'
 import localesJA from './locales/ja'
+import localesVI from './locales/vi'
 
 const i18n = createI18n({
     legacy: false,

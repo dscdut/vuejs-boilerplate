@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/auth'
-import { useMutation } from '@tanstack/vue-query'
-import { reactive } from 'vue'
-import { Icon } from '@iconify/vue'
-import { Form, FormItem, Input, Button } from 'ant-design-vue'
 import type { LoginRequest } from '@/api/auth/auth.dto.ts'
-import GotoRegisterPageButton from './GotoRegisterPageButton.vue'
-import GotoForgotPasswordButton from './GotoForgotPasswordButton.vue'
-import SSOButtons from './SSOButtons.vue'
 import router, { RoutePath } from '@/router'
+import { useAuthStore } from '@/stores/auth'
+import { Icon } from '@iconify/vue'
+import { useMutation } from '@tanstack/vue-query'
+import { Button, Form, FormItem, Input } from 'ant-design-vue'
+import { reactive } from 'vue'
+import GotoForgotPasswordButton from './GotoForgotPasswordButton.vue'
+import GotoRegisterPageButton from './GotoRegisterPageButton.vue'
+import SSOButtons from './SSOButtons.vue'
 
 const auth = useAuthStore()
 
@@ -19,17 +19,17 @@ const loginFormState = reactive<LoginRequest>({
 
 if (auth.isLoggedIn) router.push(RoutePath.Home)
 
-const { mutate, isPending, error } = useMutation({
+const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
     mutationFn: async () => {
         await auth.login(loginFormState)
         router.push(auth.returnUrl || RoutePath.Home)
-    }
+    },
+    throwOnError: true
 })
 
 const handleLoginFailed = (errInfo: any) => {
-    // * Error will be handled by the AsyncErrorBoundary
-    // console.log('Failed:', errInfo)
+    // * Error will be handled by the AsyncErrorBoundary}
 }
 </script>
 
@@ -46,7 +46,7 @@ const handleLoginFailed = (errInfo: any) => {
             :model="loginFormState"
             layout="vertical"
             @finish="mutate"
-            @finishFailed="handleLoginFailed"
+            @finish-failed="handleLoginFailed"
         >
             <!-- ---- -->
             <FormItem

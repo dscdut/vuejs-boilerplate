@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { clsx, type ClassValue } from '@/utils/clsx'
+import { clsx, type ClassValue } from '@/utils'
 
 defineProps({
     className: {

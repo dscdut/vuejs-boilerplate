@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { RouterView, useRoute } from 'vue-router'
-import { ConfigProvider } from 'ant-design-vue'
 import { theme } from '@/theme'
+import { ConfigProvider } from 'ant-design-vue'
+import { RouterView, useRoute } from 'vue-router'
 
+import AsyncErrorBoundary from '@/components/AsyncErrorBoundary.vue'
+import AdminLayout from '@/layouts/admin/index.vue'
 import AuthLayout from '@/layouts/auth/index.vue'
 import DefaultLayout from '@/layouts/empty/index.vue'
 import LandingLayout from '@/layouts/landing-page/index.vue'
-import AdminLayout from '@/layouts/admin/index.vue'
 import { markRaw, ref, watch } from 'vue'
-import Curtain from '@/components/Curtain.vue'
-import AsyncErrorBoundary from '@/components/AsyncErrorBoundary.vue'
 
 const layouts: Record<string, typeof DefaultLayout> = {
     default: DefaultLayout,
@@ -42,7 +41,6 @@ watch(
 <template>
     <ConfigProvider :theme="theme">
         <AsyncErrorBoundary />
-        <Curtain />
         <Transition>
             <component :is="layout">
                 <RouterView />

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import { useAuthStore } from '@/stores/auth'
-import { RouterLink } from 'vue-router'
 import { RoutePath } from '@/router'
+import { useAuthStore } from '@/stores/auth'
+import { Icon } from '@iconify/vue'
+import { RouterLink } from 'vue-router'
 
 const auth = useAuthStore()
 </script>

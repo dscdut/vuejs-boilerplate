@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/auth'
-import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
-import { Icon } from '@iconify/vue'
-import { Modal } from 'ant-design-vue'
+import { apiRegister } from '@/api'
 import type { RegisterRequest } from '@/api/auth/auth.dto'
-import { omit } from 'lodash'
-import { Form, FormItem, Input, Button } from 'ant-design-vue'
-import { apiRegister } from '@/api/auth/auth.api'
-import { useMutation } from '@tanstack/vue-query'
 import { RoutePath } from '@/router'
+import { useAuthStore } from '@/stores/auth'
+import { Icon } from '@iconify/vue'
+import { useMutation } from '@tanstack/vue-query'
+import { Button, Form, FormItem, Input, Modal } from 'ant-design-vue'
+import { omit } from 'lodash'
+import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import GotoLoginPageButton from './GotoLoginPageButton.vue'
 
 const { t } = useI18n()
@@ -42,15 +41,12 @@ const { mutate, isPending } = useMutation({
             content: t('register.alert.click_ok_to_direct_to_login_page')
         })
         router.push(RoutePath.Login)
-    }
+    },
+    throwOnError: true
 })
 
 const onFinishFailed = (errInfo: any) => {
     // * Error will be handled by the AsyncErrorBoundary}
-    // Modal.error({
-    //     title: 'Đăng ký thất bại',
-    //     content: errInfo
-    // })
 }
 </script>
 

@@ -41,15 +41,12 @@ const { mutate, isPending } = useMutation({
             content: t('register.alert.click_ok_to_direct_to_login_page')
         })
         router.push(RoutePath.Login)
-    }
+    },
+    throwOnError: true
 })
 
 const onFinishFailed = (errInfo: any) => {
     // * Error will be handled by the AsyncErrorBoundary}
-    // Modal.error({
-    //     title: 'Đăng ký thất bại',
-    //     content: errInfo
-    // })
 }
 </script>
 

@@ -23,7 +23,7 @@ export const useAuthStore = defineStore({
     state: (): AuthStoreState => ({}),
     getters: {
         isLoggedIn(state) {
-            return !!state?.accessToken
+            return !!state.accessToken
         }
     },
     actions: {
@@ -31,22 +31,27 @@ export const useAuthStore = defineStore({
             const loginResp = await apiLogin(payload)
 
             this.saveAuthData({
-                accessToken: loginResp.access,
-                refreshToken: loginResp.refresh,
-                payload: jwtDecode(loginResp.access)
+                accessToken: loginResp.accessToken,
+                refreshToken: loginResp.refreshToken,
+                payload: jwtDecode(loginResp.accessToken)
             })
 
             router.push(this.returnUrl || RoutePath.Home)
         },
-        async logout() {
-            // revoke token, stop refresh timer, and clear local storage
-            // TODO: Call API to revoke token
-            this.stopRefreshTokenTimer()
-            localStorage.removeItem('accessToken')
-            localStorage.removeItem('refreshToken')
+        async clear() {
+            console.debug('clear')
             this.accessToken = undefined
             this.refreshToken = undefined
             this.payload = undefined
+            this.returnUrl = undefined
+            this.stopRefreshTokenTimer()
+            localStorage.removeItem('accessToken')
+            localStorage.removeItem('refreshToken')
+        },
+        async logout() {
+            // revoke token, stop refresh timer, and clear local storage
+            // TODO: Call API to revoke token
+            this.clear()
             router.push(RoutePath.Login)
         },
         //
@@ -71,6 +76,7 @@ export const useAuthStore = defineStore({
             const refreshToken = localStorage.getItem('refreshToken')
 
             if (!accessToken || !refreshToken) {
+                this.clear()
                 return
             }
 
@@ -79,20 +85,33 @@ export const useAuthStore = defineStore({
                 refreshToken,
                 payload: jwtDecode(accessToken)
             })
+
+            await this.doRefreshToken(refreshToken)
         },
-        async doRefreshToken() {
-            if (!this.refreshToken) {
-                return
-            }
+        async doRefreshToken(refreshToken?: string) {
+            try {
+                const _refreshToken = refreshToken ?? this.refreshToken
+                if (!_refreshToken) {
+                    console.debug('no refresh token')
+                    throw new Error()
+                }
 
-            const respData = await apiRefreshToken({ refresh: this.refreshToken })
-            if (!respData?.access) {
-                Promise.reject('Something went wrong')
-            }
+                const respData = await apiRefreshToken({
+                    refreshToken: _refreshToken
+                })
+                if (!respData?.accessToken) {
+                    console.debug('no access token in resp')
+                    throw new Error()
+                }
 
-            this.saveAuthData({
-                accessToken: respData.access
-            })
+                this.saveAuthData({
+                    accessToken: respData.accessToken
+                })
+            } catch (error) {
+                console.error('doRefreshToken error', error)
+                alert('Session expired. Please login again.')
+                this.logout()
+            }
         },
         startRefreshTokenTimer() {
             if (!this.payload) {

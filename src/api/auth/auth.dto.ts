@@ -5,18 +5,18 @@ export type LoginRequest = {
 }
 
 export type LoginResponse = {
-    refresh: string
-    access: string
+    refreshToken: string
+    accessToken: string
 }
 
 /** REFRESH TOKEN */
 
 export type RefreshTokenRequest = {
-    refresh: string
+    refreshToken: string
 }
 
 export type RefreshTokenResponse = {
-    access: string
+    accessToken: string
 }
 
 /** REGISTER */
@@ -29,4 +29,10 @@ export type RegisterRequest = {
 
 export type RegisterResponse = {
     //
+}
+
+/** I AM ADMIN */
+
+export type IAmAdminResponse = {
+    isAdmin: boolean
 }

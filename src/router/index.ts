@@ -131,10 +131,11 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
     // redirect to login page if not logged in and trying to access a restricted page
-    console.log(':::Router -> ', to.path)
+    console.info(':::Router -> Enter', to.path)
     const existingPages = router.getRoutes().map((route) => route.path)
+
     if (!existingPages.includes(to.path)) {
-        console.log(`:::Router -> '${to.path}' not found, redirect to 404 page`)
+        console.info(`:::Router -> '${to.path}' not found, redirect to 404 page`)
         return RoutePath.NotFound
     }
 
@@ -142,7 +143,7 @@ router.beforeEach(async (to) => {
     const authStore = useAuthStore()
 
     if (toAuthRequiredRoutes && !authStore.isLoggedIn) {
-        console.log(`:::Router -> '${to.path}' requires authentication, redirect to login page`)
+        console.info(`:::Router -> '${to.path}' requires authentication, redirect to login page`)
         authStore.returnUrl = to.fullPath
         return RoutePath.Login
     }

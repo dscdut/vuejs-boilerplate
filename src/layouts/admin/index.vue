@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { apiIAmAdmin } from '@/api'
 import Curtain from '@/components/Curtain.vue'
 import router, { RoutePath } from '@/router'
-import { sleep } from '@/utils/common'
 import { useQuery } from '@tanstack/vue-query'
 import { watch } from 'vue'
 import AdminSidebar from './AdminSidebar.vue'
@@ -9,21 +9,15 @@ import AdminSidebar from './AdminSidebar.vue'
 const { data: canAccess, isLoading: isValidatingCanAccess } = useQuery({
     queryKey: ['check-admin-page-accessible'],
     queryFn: async () => {
-        // Simulate calling the 'i-am-admin' route, or call an RBAC checking route,... whatever you want
-        await sleep(1000) // Simulate the server response time
-        const response = {
-            data: {
-                canAccess: true
-            }
-        }
-
-        return response.data.canAccess
+        const { isAdmin } = await apiIAmAdmin()
+        console.log('Is admin', isAdmin)
+        return isAdmin
     }
 })
 
 watch(canAccess, (value) => {
     if (!value) {
-        // Redirect to home page
+        console.info(':::::Admin -> Not admin, redirecting to home page')
         router.push(RoutePath.Home)
     }
 })

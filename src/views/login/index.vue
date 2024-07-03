@@ -19,17 +19,17 @@ const loginFormState = reactive<LoginRequest>({
 
 if (auth.isLoggedIn) router.push(RoutePath.Home)
 
-const { mutate, isPending, error } = useMutation({
+const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
     mutationFn: async () => {
         await auth.login(loginFormState)
         router.push(auth.returnUrl || RoutePath.Home)
-    }
+    },
+    throwOnError: true
 })
 
 const handleLoginFailed = (errInfo: any) => {
-    // * Error will be handled by the AsyncErrorBoundary
-    // console.log('Failed:', errInfo)
+    // * Error will be handled by the AsyncErrorBoundary}
 }
 </script>
 
@@ -46,7 +46,7 @@ const handleLoginFailed = (errInfo: any) => {
             :model="loginFormState"
             layout="vertical"
             @finish="mutate"
-            @finishFailed="handleLoginFailed"
+            @finish-failed="handleLoginFailed"
         >
             <!-- ---- -->
             <FormItem

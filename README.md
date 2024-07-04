@@ -6,6 +6,16 @@ This template should help get you started developing with Vue 3 in Vite.
 
 [https://vuejs-boilerplate-gdscdut.vercel.app/](https://vuejs-boilerplate-gdscdut.vercel.app/)
 
+## Mock account
+
+```
+admin@example.com
+very_strong_password_123A@
+------
+user@example.com
+very_strong_password_123A@
+```
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
@@ -44,12 +54,6 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)

@@ -40,6 +40,75 @@ const localesJA = {
         },
         login_reminder: 'すでにアカウントをお持ちですか？',
         to_login_page: 'ログインページへ'
+    },
+    home: {
+        hero: {
+            welcome: 'Gravity Fallsへようこそ！',
+            secondary: `夏休みのため、12歳の双子のディッパーとメイベル・パインズは、カリフォルニア州ピードモントの自宅からオレゴン州ロードキル郡の架空の町グラビティフォールズに送られ、観光名所「ミステリーシャック」を経営する大叔父スタン・パインズ（通称グランクル・スタン）と共に夏を過ごすことになります。この小さな町では、物事は見かけとは違い、ディッパーが森で見つけた謎の日記の助けを借りて、彼らは毎日町の謎を解き明かしていきます。`,
+            start_now: '今すぐ始める',
+            learn_more: '詳しく見る'
+        },
+        features: {
+            title: 'どちらの側にいるかを確認してください',
+            secondary:
+                '悪夢から始まり、悪夢になった。私は愚かでした、答えを求めました、シンボルを描きました、言葉を言いました：重力が落ち、地球が空になり、一つの目を持つ獣を恐れてください。',
+            feature1: {
+                title: 'ビル・サイファー！ 三角形！',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+            },
+            feature2: {
+                title: 'ブラックマジック',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+            },
+            feature3: {
+                title: '白黒',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+            },
+            feature4: {
+                title: '...を探す',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+            },
+            feature5: {
+                title: 'フラグ',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+            },
+            feature6: {
+                title: '気をつけて！',
+                description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+            }
+        },
+        banner: {
+            title: 'Lorem Ipsum!!!',
+            secondary:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit nisi eum doloremque libero? Suscipit velit porro ea facere consectetur sequi.',
+            get_started: 'はじめる'
+        }
+    },
+    admin: {
+        sidebar: {
+            logout: {
+                title: 'ログアウト',
+                prompt: 'ログアウトしますか？',
+                ok: 'はい',
+                cancel: 'いいえ'
+            },
+            back_home: {
+                title: 'ホームに戻る'
+            }
+        }
+    },
+    landingpage: {
+        navbar: {
+            login: 'ログイン',
+            logout: 'ログアウト',
+            signup: 'サインアップ'
+        }
     }
 }
 

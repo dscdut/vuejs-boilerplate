@@ -1,12 +1,11 @@
 import { createI18n } from 'vue-i18n'
 
-import localesEN from './locales/en'
-import localesJA from './locales/ja'
-import localesVI from './locales/vi'
+import { localesEN, localesJA, localesVI } from './locales'
+const cachedLocale = localStorage.getItem('locale') || 'en'
 
 const i18n = createI18n({
     legacy: false,
-    locale: 'en',
+    locale: cachedLocale,
     fallbackLocale: 'vi',
     messages: {
         vi: localesVI,

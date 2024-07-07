@@ -101,6 +101,13 @@ const localesEN = {
                 title: 'Back to Home'
             }
         }
+    },
+    landingpage: {
+        navbar: {
+            login: 'Log In',
+            logout: 'Logout',
+            signup: 'Sign Up'
+        }
     }
 }
 

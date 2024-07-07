@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import LanguageChanger from '@/components/LanguageChanger.vue'
 import router, { RoutePath } from '@/router'
 import { useAuthStore } from '@/stores/auth'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
@@ -43,12 +44,16 @@ const handleLogout = () => {
 <template>
     <!-- ! MENU ITEM KEY MUST BE PATH -->
     <div class="gap-4 flex flex-col bg-white z-[666] border-r drop-shadow">
-        <Button type="primary" block class="mb-8 rounded-none" @click="handleCollapse">
+        <Button type="primary" block class="mb-4 rounded-none" @click="handleCollapse">
             <template #icon>
                 <MenuUnfoldOutlined v-if="collapsed" />
                 <MenuFoldOutlined v-else />
             </template>
         </Button>
+        <div class="pl-6 mb-6">
+            <LanguageChanger class-name="w-48" />
+        </div>
+
         <div
             class="flex flex-col gap-3 mb-12"
             :class="{ 'pl-6': !collapsed, 'items-center': collapsed }"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Curtain from '@/components/Curtain.vue'
+import LanguageChanger from '@/components/LanguageChanger.vue'
 import { ref } from 'vue'
 
 const showCurtain = ref(true)
@@ -18,6 +19,7 @@ setTimeout(() => {
                 <div class="text-4xl font-black">LOGO</div>
             </RouterLink>
             <slot />
+            <LanguageChanger block />
         </div>
         <div class="right p-8 hidden lg:block flex-1">
             <div class="rounded-xl overflow-hidden w-full h-full">

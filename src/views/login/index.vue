@@ -34,7 +34,7 @@ const handleLoginFailed = (errInfo: any) => {
 </script>
 
 <template>
-    <div id="login" class="my-auto">
+    <div id="login" class="my-auto w-full">
         <!-- Title -->
         <h1 class="login__title font-black text-5xl mb-16">
             {{ $t('login.big_title') }}

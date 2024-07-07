@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import LanguageChanger from '@/components/LanguageChanger.vue'
 import { RoutePath } from '@/router'
 import { useAuthStore } from '@/stores/auth'
 import { Icon } from '@iconify/vue'
@@ -79,18 +80,21 @@ const auth = useAuthStore()
                     </li>
                 </ul>
             </nav>
-            <div>
+            <div class="flex gap-4 items-center">
+                <LanguageChanger size="large" />
                 <div v-if="!auth.isLoggedIn" class="hidden lg:flex items-center gap-4">
-                    <RouterLink :to="RoutePath.Login">Log in</RouterLink>
+                    <RouterLink :to="RoutePath.Login">
+                        {{ $t('landingpage.navbar.login') }}
+                    </RouterLink>
                     <RouterLink
                         :to="RoutePath.Register"
                         class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-vue text-white hover:bg-vue-shade border-2 border-transparent"
-                        >Sign up
+                    >
+                        {{ $t('landingpage.navbar.signup') }}
                     </RouterLink>
                 </div>
                 <div v-else class="hidden lg:flex items-center gap-4">
-                    <!-- <RouterLink to="/dashboard">Dashboard</RouterLink> -->
-                    <button @click="auth.logout">Logout</button>
+                    <button @click="auth.logout">{{ $t('landingpage.navbar.logout') }}</button>
                 </div>
             </div>
         </header>
